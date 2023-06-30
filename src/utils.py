@@ -1,7 +1,11 @@
+import os
 import pandas as pd
 
+
 def read_soil_type_from_table(sand: float, silt: float, clay: float):
-    df = pd.read_csv('data/DIN4220_Soil_Types_vanGenuchten.csv', sep='\t')
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    data_file_path = os.path.join(current_dir, '../data/DIN4220_Soil_Types_vanGenuchten.csv')
+    df = pd.read_csv(data_file_path, sep='\t')
     min_diff = 999
     determined_soil_type = ""
     determined_soil_name = ""

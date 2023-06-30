@@ -1,6 +1,8 @@
+import os
 import numpy as np
 import pandas as pd
 import utils
+
 
 class vanGenuchten:
 
@@ -11,11 +13,13 @@ class vanGenuchten:
     l: float        # -
     K0: float       # cm/d
 
-    def read_parameters_from_table(self, soil_type_short_name: str, return_shares = False):
-        df = pd.read_csv('data/DIN4220_Soil_Types_vanGenuchten.csv', sep='\t')
+    def read_parameters_from_table(self, soil_type_short_name: str):
+        current_dir = os.path.dirname(os.path.realpath(__file__))
+        data_file_path = os.path.join(current_dir, '../data/DIN4220_Soil_Types_vanGenuchten.csv')
+        df = pd.read_csv(data_file_path, sep='\t')
         # read table with vG Params
         for _, row in df.iterrows():
-            name, soil_type, fClay, fSilt, fSand, theta_r, theta_s, alpha, n, l, K0 = row.values
+            name, soil_type, f_clay, f_silt, f_sand, theta_r, theta_s, alpha, n, l, K0 = row.values
             if soil_type == soil_type_short_name:
                 print(f'{name} ({soil_type})')
                 self.theta_r = theta_r
@@ -24,10 +28,9 @@ class vanGenuchten:
                 self.n = n
                 self.l = l
                 self.K0 = K0
-                if return_shares:
-                    return fClay, fSilt, fSand
-                else:
-                    return name
+
+                return name, f_sand, f_silt, f_clay
+
         else:
             raise Exception("Soil type '{}' not found!".format(soil_type_short_name))
 

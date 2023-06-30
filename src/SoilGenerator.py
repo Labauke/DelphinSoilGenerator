@@ -102,7 +102,8 @@ class SoilGenerator:
             ax[2].legend()
 
         # write m6
-        m6_dummy_filepath = os.path.join("data/dummy.m6")
+        current_dir = os.path.dirname(os.path.realpath(__file__))
+        m6_dummy_filepath = os.path.join(current_dir, '../data/dummy.m6')
         shutil.copyfile(m6_dummy_filepath, m6_file_path)
         dm = DelPhynMat(m6_file_path)
         dm.writeBaseProperty("NAME", 'DE: ' + material_name)
