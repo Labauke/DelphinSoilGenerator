@@ -13,6 +13,12 @@ The `src` directory contains these classes:
 
 `examples.py`: Demonstrates the usage of the SoilGenerator with different options
 
+
+## Dependencies
+- pandas (1.3.5)
+- numpy (1.21.5)
+- matplotlib (3.5.1)
+
 ## Usage
 
 You may generate m6 file for the soil type 'Sl2' with density of 1350 kg/m³
