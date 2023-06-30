@@ -1,4 +1,4 @@
-from srcSoilGenerator import SoilGenerator
+from SoilGenerator import SoilGenerator
 from vanGenuchten import vanGenuchten
 
 
