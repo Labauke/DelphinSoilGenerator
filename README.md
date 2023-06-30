@@ -24,6 +24,9 @@ The `src` directory contains these classes:
 You may generate m6 file for the soil type 'Sl2' with density of 1350 kg/m³
 
 ````
+from SoilGenerator import SoilGenerator
+from vanGenuchten import vanGenuchten
+
 density = 1350 # kg/m³
 soil_type = 'Sl2'
 
@@ -37,6 +40,9 @@ sg.create_m6_file(m6_file_path)
 Or you want to specify the grain size distribution and density
 
 ```
+from SoilGenerator import SoilGenerator
+from vanGenuchten import vanGenuchten
+
 density = 1600 # kg/m³
 f_sand = 0.3 # m3/m3
 f_silt = 0.5 # m3/m3
